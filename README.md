@@ -2,10 +2,10 @@
 2. Create an internet gateway
 3. Create a route table
 
-|   Destination    |   Target                    |   Status  |   Propagated  |
-|------------------|-----------------------------|-----------|---------------|
-|   `10.212.0.0/16`  |   local                     |   Active  |   No          |
-|   `0.0.0.0/0`      |   Your internet gateway id  |   Active  |   No          |
+    |   Destination    |   Target                    |   Status  |   Propagated  |
+    |------------------|-----------------------------|-----------|---------------|
+    |   `10.212.0.0/16`  |   local                     |   Active  |   No          |
+    |   `0.0.0.0/0`      |   Your internet gateway id  |   Active  |   No          |
 4. Create 3 ACLs
     1. Public:
         1. Inbound:
