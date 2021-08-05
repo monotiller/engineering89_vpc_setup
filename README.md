@@ -2,7 +2,13 @@
 ## Before we begin
 I was assigned the private IP address `10.212.0.0` for this task so anywhere you see that, replace it with your own private IP!
 
-## Steps
+Please note also that to keep things consistent we will be using:
+- `10.212.1.0` to reference the public subnet
+- `10.212.2.0` to reference the private subnet
+- `10.212.3.0` to reference the Bastion's subnet 
+
+## Steps for creation
+Feel free to name anything anything, however, where I mention "public", "private" and "Bastion", it is recommended you choose those as the suffixes to your naming convention to help you better keep track of what's doing what!
 
 1. Create a new VPC the private IP address as the IPv4 CIDR block
 2. Create an internet gateway
@@ -71,24 +77,24 @@ I was assigned the private IP address `10.212.0.0` for this task so anywhere you
 
         | Name | Security group rule ID | IP version            | Type | Protocol | Port range | Source | Description |                         |
         |------|------------------------|-----------------------|------|----------|------------|--------|-------------|-------------------------|
-        |      | –                      | sgr-02d0dff61fca657a1 | IPv4 | HTTP     | TCP        | `80`     | `0.0.0.0/0`   | Allows users to connect |
-        |      | –                      | sgr-0680b6d60cffe5b47 | IPv4 | SSH      | TCP        | `22`     | `[your ip]/32` | Allows us to SSH in     |
+        |      | –                      | [Will be unique to your setup] | IPv4 | HTTP     | TCP        | `80`     | `0.0.0.0/0`   | Allows users to connect |
+        |      | –                      | [Will be unique to your setup] | IPv4 | SSH      | TCP        | `22`     | `[your ip]/32` | Allows us to SSH in     |
         2. Outbound:
 
         | Name | Security group rule ID | IP version            | Type | Protocol    | Port range | Destination | Description |                                |
         |------|------------------------|-----------------------|------|-------------|------------|-------------|-------------|--------------------------------|
-        |      | –                      | sgr-099431bf7eb8cf289 | IPv4 | All traffic | All        | All         | `0.0.0.0/0`   | Allows all traffic leaving the |
+        |      | –                      | [Will be unique to your setup] | IPv4 | All traffic | All        | All         | `0.0.0.0/0`   | Allows all traffic leaving the |
     2. Bastion
         1. Inbound:
 
         | Name | Security group rule ID | IP version            | Type | Protocol | Port range | Source | Description      |                                                                    |
         |------|------------------------|-----------------------|------|----------|------------|--------|------------------|--------------------------------------------------------------------|
-        |      | –                      | sgr-0446df729793b5a88 | IPv4 | SSH      | TCP        | `22`     | `[your ip]/32` | We only want the ssh set up since this talks between us and the db |
+        |      | –                      | [Will be unique to your setup] | IPv4 | SSH      | TCP        | `22`     | `[your ip]/32` | We only want the ssh set up since this talks between us and the db |
         2. Outbound:
 
         | Name | Security group rule ID | IP version            | Type | Protocol    | Port range | Destination | Description |   |
         |------|------------------------|-----------------------|------|-------------|------------|-------------|-------------|---|
-        |      | –                      | sgr-008207190a3f5c202 | IPv4 | All traffic | All        | All         | `0.0.0.0/0`   | – |
+        |      | –                      | [Will be unique to your setup] | IPv4 | All traffic | All        | All         | `0.0.0.0/0`   | – |
     3. db
         1. Inbound: link to your app and you db security groups on port `27017` and `22` respectively
         2. Outbound: Leave as default
@@ -97,4 +103,11 @@ I was assigned the private IP address `10.212.0.0` for this task so anywhere you
     2. DB
     3. Bastion
 8. For each step, select the matching VPC and corresponding subnet & security group for each instance
-9. Make sure that for app and bastion you allow for a public IP to be automatically assigned
+9. Make sure that for app and Bastion you allow for a public IP to be automatically assigned
+
+## SSH in to the DB from Bastion
+In order to access the DB you will have to go via your Bastion instance. Here's how:
+
+1. SSH in to your Bastion instance
+2. If you set a key for your DB instance you'll need to upload that to your Bastion instance now
+3. SSH in to your DB instance from within your Bastion instance!
