@@ -65,12 +65,12 @@ Feel free to name anything anything, however, where I mention "public", "private
 5. Create 3 subnets in the eu-west-1a availability zone:
     1. Public: `10.212.1.0`
         1. Assign to public acl
-        2. Assign to internet gateway
+        2. Assign to your route table
     2. Private: `10.212.2.0`
         1. Assign to private acl
     3. Bastion: `10.212.3.0`
         1. Assign to public acl
-        2. Assign to internet gateway
+        2. Assign to your route table
 6. Create 3 security groups:
     1. app:
         1. Inbound:
