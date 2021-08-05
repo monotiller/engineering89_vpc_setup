@@ -1,3 +1,9 @@
+# VPC Setup
+## Before we begin
+I was assigned the private IP address `10.212.0.0` for this task so anywhere you see that, replace it with your own private IP!
+
+## Steps
+
 1. Create a new VPC the private IP address as the IPv4 CIDR block
 2. Create an internet gateway
 3. Create a route table
