@@ -77,7 +77,7 @@
 
         | Name | Security group rule ID | IP version            | Type | Protocol | Port range | Source | Description      |                                                                    |
         |------|------------------------|-----------------------|------|----------|------------|--------|------------------|--------------------------------------------------------------------|
-        |      | –                      | sgr-0446df729793b5a88 | IPv4 | SSH      | TCP        | `22`     | `90.240.26.195/32` | We only want the ssh set up since this talks between us and the db |
+        |      | –                      | sgr-0446df729793b5a88 | IPv4 | SSH      | TCP        | `22`     | `[your ip]/32` | We only want the ssh set up since this talks between us and the db |
         2. Outbound:
 
         | Name | Security group rule ID | IP version            | Type | Protocol    | Port range | Destination | Description |   |
